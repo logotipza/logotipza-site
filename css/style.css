@@ -41,7 +41,7 @@ h3,
 h4,
 input,
 label {
-    line-height: 1;
+    line-height: 1.1;
     font-weight: 600;
 }
 
@@ -50,6 +50,7 @@ h2,
 h3,
 h4 {
     text-wrap: balance;
+    text-align: center;
 }
 
 a:not([class]) {
@@ -84,6 +85,7 @@ textarea:not([rows]) {
     --primary-color: rgb(5, 45, 55);
     --secondary-color: rgb(166, 166, 166);
     --accent-color: orange;
+    --primary-gradient: linear-gradient(45deg, #DC2424 0%, #4A569D 100%);
 
     /* Sizes */
     --big-gap: 48px;
@@ -91,37 +93,113 @@ textarea:not([rows]) {
     --lit-gap: 12px;
 
     /* Fonts */
-    --title-size: calc(58px + 174 * (100vw - 320px) / 2240);
-    --subtitle-size: calc(22px + 66 * (100vw - 320px) / 2240);
-    --paragraph-size: calc(12px + 36 * (100vw - 320px) / 2240);
+    --main-font: 'Manrope', sans-serif;
+    --title-size: calc(40px + 80 * (100vw - 320px) / 2240);
+    --subtitle-size: calc(20px + 40 * (100vw - 320px) / 2240);
+    --paragraph-size: calc(12px + 14 * (100vw - 320px) / 2240);
 }
 
-.section {
-    margin-left: var(--mid-gap);
-    margin-right: var(--mid-gap);
+section {
+    margin-left: var(--big-gap);
+    margin-right: var(--big-gap);
+
+    @media (max-width: 768px) and (min-width: 320px) {
+        margin-left: var(--mid-gap);
+        margin-right: var(--mid-gap);
+    }
+
+    @media (max-width: 320px) {
+        margin-left: var(--lit-gap);
+        margin-right: var(--lit-gap);
+    }
 }
 
 h1 {
     font-size: var(--title-size);
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--main-font);
 
     /* линейный градиент, слева на право, 3 цвета */
-    background-image: linear-gradient(45deg, #DC2424 0%, #4A569D 100%);
-
+    /* background-image: var(--primary-gradient) */
     /* обрезаем фон по тексту */
-    -webkit-background-clip: text;
-
+    /* -webkit-background-clip: text */
     /* меняет цвет текста заголовка на прозрачный что бы можно было увидеть градиент */
-    -webkit-text-fill-color: transparent;
+    /* -webkit-text-fill-color: transparent */
+    color: #713232;
+}
+
+h1 {
+    font-size: var(--title-size);
+    font-family: var(--main-font);
+    font-weight: 600;
+
+    &.hero-title {
+        max-width: 800px;
+        margin-bottom: var(--big-gap);
+        color: #ffffff;
+
+        @media (max-width: 768px) and (min-width: 320px) {
+            max-width: 400px;
+            margin-bottom: var(--mid-gap);
+        }
+
+        @media (max-width: 320px) {
+            max-width: 280px;
+            margin-bottom: var(--lit-gap);
+        }
+    }
 }
 
 p {
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--main-font);
     font-size: var(--paragraph-size);
     font-weight: 600;
+
+    &.hero-text {
+        max-width: 900px;
+        margin-bottom: var(--big-gap);
+        color: #ffffff;
+
+        @media (max-width: 768px) and (min-width: 320px) {
+            max-width: 400px;
+            margin-bottom: var(--mid-gap);
+        }
+
+        @media (max-width: 320px) {
+            max-width: 280px;
+            margin-bottom: var(--lit-gap);
+        }
+    }
 }
 
-.flex-item {
-    flex-basis: auto;
+.hero-block {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: var(--primary-gradient);
 }
+
+button {
+    font-family: var(--main-font);
+    font-size: var(--paragraph-size);
+    padding: var(--mid-gap) var(--big-gap);
+    color: #ffffff;
+    border-radius: 20px;
+    border-width: 0;
+    background-image: var(--primary-gradient);
+    box-shadow: 0 40px 50px -13px #01010d;
+
+    &:hover {
+        background-image: linear-gradient(210deg, #DC2424 0%, #4A569D 100%);
+        transition: 3s;
+    }
+}
+
+.hero-section {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 
